@@ -11,7 +11,7 @@
 
     <packaging>war</packaging>
 
-    <name>TaskNest</name>
+    <name>project-4-tomcat</name>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
