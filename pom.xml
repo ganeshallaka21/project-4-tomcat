@@ -24,40 +24,24 @@
 
     <!-- Servlet API for Tomcat 9 -->
     <dependencies>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
-        </dependency>
     </dependencies>
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
-
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>5.1.0.4751</version>
             </plugin>
-
         </plugins>
     </build>
-     <distributionManagement>
-    <repository>
-      <id>nexus-releases</id>
-      <url>http://44.201.202.122:8081/repository/maven-releases/</url>
-    </repository>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://44.201.202.122:8081/repository/maven-snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
-
 </project>
