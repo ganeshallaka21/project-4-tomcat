@@ -46,31 +46,12 @@ jobs:
       - name: Package
         run: mvn package
 
-jobs:
-  build-sonarqube-nexus-tomcat:
-
-    runs-on: ubuntu-latest
-
-    steps:
-
-      # 1. Checkout source code
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      # 2. Setup Java
-      - name: Setup JDK 17
-        uses: actions/setup-java@v4
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-          cache: maven
-
-      # 3. Build and test
+      # 7. Build and test
       - name: Build Application
         run: |
           mvn clean package
 
-      # 4. SonarQube analysis
+      # 8. SonarQube analysis
       - name: SonarQube Analysis
         run: |
           mvn sonar:sonar \
@@ -78,7 +59,7 @@ jobs:
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.token=${{ secrets.SONAR_TOKEN }}
 
-      # 5. Upload WAR file to Nexus
+      # 9. Upload WAR file to Nexus
       - name: Upload WAR to Nexus
         run: |
           mvn deploy \
@@ -86,12 +67,12 @@ jobs:
             -Dnexus.username=${{ secrets.NEXUS_USERNAME }} \
             -Dnexus.password=${{ secrets.NEXUS_PASSWORD }}
 
-      # 6. Download WAR from build
+      # 10. Download WAR from build
       - name: Find WAR File
         run: |
           ls -la target/
 
-      # 7. Deploy WAR to Tomcat
+      # 11. Deploy WAR to Tomcat
       - name: Deploy to Tomcat
         run: |
           curl -u "${{ secrets.TOMCAT_USER_PROJECT }}:${{ secrets.TOMCAT_PASS_PROJECT }}" \
