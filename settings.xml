@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0
+                              https://maven.apache.org/xsd/settings-1.2.0.xsd">
+
+  <servers>
+    <!-- This ID must match <id>nexus-releases</id> in your pom.xml -->
+    <server>
+      <id>nexus-releases</id>
+      <username>admin</username>
+      <password>g@nesh2110</password> <!-- CHANGE THIS TO YOUR REAL NEXUS PASSWORD -->
+    </server>
+
+    <!-- For snapshots, if you use them -->
+    <server>
+      <id>nexus-snapshots</id>
+      <username>admin</username>
+      <password>g@nesh2110</password> <!-- CHANGE THIS TO YOUR REAL NEXUS PASSWORD -->
+    </server>
+  </servers>
+
+  <!-- Optional but recommended -->
+  <mirrors>
+    <mirror>
+      <id>nexus</id>
+      <mirrorOf>*</mirrorOf>
+      <url>http://44.201.202.122:8081/repository/maven-public/</url>
+    </mirror>
+  </mirrors>
+
+  <profiles>
+    <profile>
+      <id>nexus</id>
+      <repositories>
+        <repository>
+          <id>central</id>
+          <url>http://central</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+        <repository>
+          <id>nexus-releases</id>
+          <url>http://44.201.202.122:8081/repository/maven-releases/</url>
+          <releases><enabled>true</enabled></releases>
+          <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+        <repository>
+          <id>nexus-snapshots</id>
+          <url>http://44.201.202.122:8081/repository/maven-snapshots/</url>
+          <releases><enabled>false</enabled></releases>
+          <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+      </repositories>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>nexus</activeProfile>
+  </activeProfiles>
+
+</settings>
