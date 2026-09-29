@@ -1,16 +1,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         https://maven.apache.org/xsd/maven-4.0.0.xsd">
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.tasknest</groupId>
     <artifactId>tasknest</artifactId>
-    <version>3.4.0</version>
-
+    <version>1.0.0</version>
     <packaging>war</packaging>
-
     <name>project-4-tomcat</name>
 
     <properties>
@@ -19,10 +15,10 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.projectKey>tasknest</sonar.projectKey>
         <sonar.projectName>tasknest</sonar.projectName>
-        <sonar.host.url>your-sonar-url</sonar.host.url>
+        <!-- CHANGE THIS TO YOUR REAL SONAR URL -->
+        <sonar.host.url>http://44.201.202.122:9000</sonar.host.url>
     </properties>
 
-    <!-- Servlet API for Tomcat 9 -->
     <dependencies>
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -34,20 +30,36 @@
 
     <build>
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
-
             <plugin>
                 <groupId>org.sonarsource.scanner.maven</groupId>
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>5.1.0.4751</version>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>3.1.4</version>
+            </plugin>
         </plugins>
     </build>
+
+    <!-- ADD THIS - THIS FIXES YOUR NEXUS ERROR -->
+    <distributionManagement>
+        <repository>
+            <id>nexus-releases</id>
+            <name>Nexus Releases</name>
+            <url>http://44.201.202.122:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus-snapshots</id>
+            <name>Nexus Snapshots</name>
+            <url>http://44.201.202.122:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
