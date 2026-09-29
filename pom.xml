@@ -40,8 +40,6 @@
                 <artifactId>sonar-maven-plugin</artifactId>
                 <version>5.1.0.4751</version>
             </plugin>
-            <plugin>
-            </plugin>
         </plugins>
     </build>
 
