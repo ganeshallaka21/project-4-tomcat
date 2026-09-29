@@ -1,9 +1,9 @@
-name: CI/CD Pipeline with SonarQube
+name: Java CI/CD Pipeline
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
 
@@ -45,12 +45,6 @@ jobs:
       # 6. Package
       - name: Package
         run: mvn package
-name: Java CI/CD Pipeline
-
-on:
-  push:
-    branches:
-      - main
 
 jobs:
   build-sonarqube-nexus-tomcat:
